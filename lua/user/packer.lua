@@ -50,6 +50,9 @@ return require("packer").startup(function(use)
 	-- Colorscheme --
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("navarasu/onedark.nvim")
+	use({ "projekt0n/github-nvim-theme", tag = "v0.0.7" })
+	use({ "sainnhe/sonokai" })
+	use({ "shaunsingh/nord.nvim" })
 
 	-- Treesitter --
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
