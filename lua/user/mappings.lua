@@ -70,8 +70,11 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", "<cmd>vim.lsp.buf.format()<cr>", opts)
 
 -- Nvim go --
-keymap("n", "<leader>gat", ":GoAddTags<cr>", opts)
-keymap("n", "<leader>gif", ":GoIfErr<cr>", opts)
+keymap("n", "<leader>gat", ":GoAddTag<cr>", opts)
+keymap("n", "<leader>grt", ":GoRmTag<cr>", opts)
+keymap("n", "<leader>gfs", ":GoFillStruct<cr>", opts)
+
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 
 vim.cmd([[
     command W w

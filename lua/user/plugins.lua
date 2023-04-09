@@ -112,7 +112,10 @@ return require("packer").startup(function(use)
 	use("goolord/alpha-nvim")
 
 	-- Nvim go --
-	use("crispgm/nvim-go")
+	use("ray-x/go.nvim")
+
+	-- Floating window support --
+	use("ray-x/guihua.lua")
 
 	-- LaTex --
 	use("lervag/vimtex")
