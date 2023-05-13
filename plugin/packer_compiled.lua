@@ -249,6 +249,11 @@ _G.packer_plugins = {
     path = "/Users/roman/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
   },
+  ["splitjoin.vim"] = {
+    loaded = true,
+    path = "/Users/roman/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
+    url = "https://github.com/AndrewRadev/splitjoin.vim"
+  },
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/Users/roman/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",

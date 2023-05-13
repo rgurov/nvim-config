@@ -120,6 +120,9 @@ return require("packer").startup(function(use)
 	-- LaTex --
 	use("lervag/vimtex")
 
+	-- Split Joni --
+	use("AndrewRadev/splitjoin.vim")
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
