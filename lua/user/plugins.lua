@@ -53,6 +53,10 @@ return require("packer").startup(function(use)
 	use({ "projekt0n/github-nvim-theme", tag = "v0.0.7" })
 	use({ "sainnhe/sonokai" })
 	use({ "shaunsingh/nord.nvim" })
+	use({ "AlexvZyl/nordic.nvim" })
+	use({ "folke/tokyonight.nvim" })
+	use({ "rebelot/kanagawa.nvim" })
+	use({ "rmehri01/onenord.nvim" })
 
 	-- Treesitter --
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
@@ -89,7 +93,7 @@ return require("packer").startup(function(use)
 	-- Git --
 	use("lewis6991/gitsigns.nvim")
 
-	-- Neovim Treee --
+	-- Neovim Tree --
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Dev icons --
