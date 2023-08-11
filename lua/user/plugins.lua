@@ -64,6 +64,17 @@ return require("packer").startup(function(use)
 	-- Undo tree --
 	use("mbbill/undotree")
 
+	-- Surround --
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
+
 	-- CMP --
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-buffer")
@@ -98,10 +109,6 @@ return require("packer").startup(function(use)
 
 	-- Dev icons --
 	use("kyazdani42/nvim-tree.lua")
-
-	-- Buffer line --
-	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
 
 	-- Lualine --
 	use("nvim-lualine/lualine.nvim")

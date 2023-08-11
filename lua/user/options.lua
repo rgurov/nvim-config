@@ -35,3 +35,5 @@ o.showtabline = 2
 
 o.list = true
 o.termguicolors = true
+
+o.showtabline = 1
