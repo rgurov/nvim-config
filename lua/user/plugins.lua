@@ -116,9 +116,6 @@ return require("packer").startup(function(use)
 	-- Projects --
 	use("ahmedkhalf/project.nvim")
 
-	-- Indent line --
-	use("lukas-reineke/indent-blankline.nvim")
-
 	-- Alpha --
 	use("goolord/alpha-nvim")
 
@@ -131,7 +128,7 @@ return require("packer").startup(function(use)
 	-- LaTex --
 	use("lervag/vimtex")
 
-	-- Split Joni --
+	-- Split Join --
 	use("AndrewRadev/splitjoin.vim")
 
 	if PACKER_BOOTSTRAP then

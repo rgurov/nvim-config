@@ -4,6 +4,7 @@ local servers = {
 	"jsonls",
 	"gopls",
 	"tsserver",
+	"omnisharp",
 }
 
 local settings = {

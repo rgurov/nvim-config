@@ -149,11 +149,6 @@ _G.packer_plugins = {
     path = "/Users/roman/.local/share/nvim/site/pack/packer/start/guihua.lua",
     url = "https://github.com/ray-x/guihua.lua"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/Users/roman/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
   ["kanagawa.nvim"] = {
     loaded = true,
     path = "/Users/roman/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
