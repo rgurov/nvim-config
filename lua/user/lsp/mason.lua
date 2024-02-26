@@ -5,6 +5,7 @@ local servers = {
 	"gopls",
 	"tsserver",
 	"omnisharp",
+	"clangd",
 }
 
 local settings = {
