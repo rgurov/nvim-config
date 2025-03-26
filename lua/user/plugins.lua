@@ -2,16 +2,16 @@ local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+    PACKER_BOOTSTRAP = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
+    print("Installing packer close and reopen Neovim...")
+    vim.cmd([[packadd packer.nvim]])
 end
 
 vim.cmd([[
@@ -23,113 +23,119 @@ vim.cmd([[
 
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+    return
 end
 
 packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+    display = {
+        open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+        end,
+    },
 })
 
 return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	use("nvim-lua/popup.nvim")
-	use("nvim-lua/plenary.nvim")
+    use("wbthomason/packer.nvim")
+    use("nvim-lua/popup.nvim")
+    use("nvim-lua/plenary.nvim")
 
-	-- Telescope --
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use("nvim-telescope/telescope-media-files.nvim")
+    -- Telescope --
+    use({
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.4",
+        requires = { { "nvim-lua/plenary.nvim" } },
+    })
+    use("nvim-telescope/telescope-media-files.nvim")
 
-	-- Colorscheme --
-	use({ "ellisonleao/gruvbox.nvim" })
-	use("navarasu/onedark.nvim")
-	use({ "projekt0n/github-nvim-theme", tag = "v0.0.7" })
-	use({ "sainnhe/sonokai" })
-	use({ "shaunsingh/nord.nvim" })
-	use({ "AlexvZyl/nordic.nvim" })
-	use({ "folke/tokyonight.nvim" })
-	use({ "rebelot/kanagawa.nvim" })
-	use({ "rmehri01/onenord.nvim" })
-	use({ "Shatur/neovim-ayu" })
+    -- Colorscheme --
+    use({ "ellisonleao/gruvbox.nvim" })
+    use("navarasu/onedark.nvim")
+    use({ "projekt0n/github-nvim-theme", tag = "v0.0.7" })
+    use({ "sainnhe/sonokai" })
+    use({ "shaunsingh/nord.nvim" })
+    use({ "AlexvZyl/nordic.nvim" })
+    use({ "folke/tokyonight.nvim" })
+    use({ "rebelot/kanagawa.nvim" })
+    use({ "rmehri01/onenord.nvim" })
+    use({ "Shatur/neovim-ayu" })
+    use({ "Yazeed1s/minimal.nvim" })
 
-	-- Treesitter --
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-	-- Undo tree --
-	use("mbbill/undotree")
+    -- Treesitter --
+    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-	-- Surround --
-	use({
-		"kylechui/nvim-surround",
-		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
-	})
+    -- Undo tree --
+    use("mbbill/undotree")
 
-	-- CMP --
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("saadparwaiz1/cmp_luasnip")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
+    -- Surround --
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end,
+    })
 
-	-- LSP --
-	use("neovim/nvim-lspconfig")
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
+    -- CMP --
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-cmdline")
+    use("saadparwaiz1/cmp_luasnip")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-nvim-lua")
 
-	-- Snippets --
-	use("L3MON4D3/LuaSnip")
-	use("rafamadriz/friendly-snippets")
+    -- LSP --
+    use("neovim/nvim-lspconfig")
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+    use("jose-elias-alvarez/null-ls.nvim")
 
-	-- Autopairs --
-	use("windwp/nvim-autopairs")
+    -- Snippets --
+    use("L3MON4D3/LuaSnip")
+    use("rafamadriz/friendly-snippets")
 
-	-- Comments --
-	use("numToStr/Comment.nvim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+    -- Autopairs --
+    use("windwp/nvim-autopairs")
 
-	-- Git --
-	use("lewis6991/gitsigns.nvim")
+    -- Comments --
+    use("numToStr/Comment.nvim")
+    use("JoosepAlviste/nvim-ts-context-commentstring")
 
-	-- Neovim Tree --
-	use("kyazdani42/nvim-web-devicons")
+    -- Git --
+    use("lewis6991/gitsigns.nvim")
+    use("tpope/vim-fugitive")
 
-	-- Dev icons --
-	use("kyazdani42/nvim-tree.lua")
+    -- Neovim Tree --
+    use("kyazdani42/nvim-web-devicons")
 
-	-- Lualine --
-	use("nvim-lualine/lualine.nvim")
+    -- Dev icons --
+    use("kyazdani42/nvim-tree.lua")
 
-	-- Projects --
-	use("ahmedkhalf/project.nvim")
+    -- Lualine --
+    use("nvim-lualine/lualine.nvim")
 
-	-- Nvim go --
-	use("ray-x/go.nvim")
+    -- Projects --
+    use("ahmedkhalf/project.nvim")
 
-	-- Floating window support --
-	use("ray-x/guihua.lua")
+    -- Nvim go --
+    use("ray-x/go.nvim")
 
-	-- LaTex --
-	use("lervag/vimtex")
+    -- Floating window support --
+    use("ray-x/guihua.lua")
 
-	-- Split Join --
-	use("AndrewRadev/splitjoin.vim")
+    -- LaTex --
+    use("lervag/vimtex")
 
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
+    -- Split Join --
+    use("AndrewRadev/splitjoin.vim")
+
+    -- Git Blame --
+    use("APZelos/blamer.nvim")
+
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
+    end
 end)
