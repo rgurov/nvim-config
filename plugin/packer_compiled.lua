@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -184,11 +189,6 @@ _G.packer_plugins = {
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/neovim-ayu",
     url = "https://github.com/Shatur/neovim-ayu"
   },
-  ["noice.nvim"] = {
-    loaded = true,
-    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/noice.nvim",
-    url = "https://github.com/folke/noice.nvim"
-  },
   ["nord.nvim"] = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nord.nvim",
@@ -198,11 +198,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nordic.nvim",
     url = "https://github.com/AlexvZyl/nordic.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -223,11 +218,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-surround"] = {
     config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0" },

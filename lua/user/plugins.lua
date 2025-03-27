@@ -137,10 +137,7 @@ return require("packer").startup(function(use)
     use("APZelos/blamer.nvim")
 
     -- Noice --
-    use({
-        "folke/noice.nvim",
-        requires = { { "MunifTanjim/nui.nvim" }, { "rcarriga/nvim-notify" } }
-    })
+    use("j-hui/fidget.nvim")
 
 
     if PACKER_BOOTSTRAP then
