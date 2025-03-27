@@ -90,33 +90,19 @@ vim.cmd([[
     command Q q
 ]])
 
-local function format_git_output(output, max_lines)
-    max_lines = max_lines or 5
-    local lines = vim.split(output, "\n", { plain = true })
-    local shown_lines = vim.list_slice(lines, 1, max_lines)
-    local result = table.concat(shown_lines, "\n")
-
-    if #lines > max_lines then
-        result = result .. "...and " .. (#lines - max_lines) .. " more line(s)"
-    end
-
-    return result
-end
-
 -- GitCommit command
 vim.api.nvim_create_user_command("GitCommit", function()
     vim.ui.input({ prompt = "Commit message: " }, function(msg)
         if msg and msg ~= "" then
             local result = vim.fn.system({ "git", "commit", "-m", msg })
-            local output = format_git_output(result, 1)
 
             if vim.v.shell_error == 0 then
-                vim.notify("Commit successful: " .. output, vim.log.levels.INFO, {
+                vim.notify("Commit successful: " .. result, vim.log.levels.INFO, {
                     title = "Git Commit",
                     timeout = 3000,
                 })
             else
-                vim.notify("Commit failed: " .. output, vim.log.levels.ERROR, {
+                vim.notify("Commit failed: " .. result, vim.log.levels.ERROR, {
                     title = "Git Commit",
                     timeout = 5000,
                 })
@@ -130,10 +116,3 @@ end, {})
 vim.keymap.set("n", "<leader>ga", ":G add .<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>gc", ":GitCommit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>gp", ":G push<CR>", { noremap = true, silent = true })
-
---[[ vim.api.nvim_create_autocmd("BufWritePost", { ]]
---[[     pattern = "*", ]]
---[[     callback = function() ]]
---[[         print(">>> BufWritePost fired for " .. vim.fn.expand("%:p")) ]]
---[[     end, ]]
---[[ }) ]]
