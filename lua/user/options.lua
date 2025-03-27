@@ -37,3 +37,9 @@ o.list = true
 o.termguicolors = true
 
 o.showtabline = 1
+
+o.cmdheight = 2
+
+o.shortmess = {
+    o = true
+}

@@ -40,6 +40,7 @@ return require("packer").startup(function(use)
     use("nvim-lua/plenary.nvim")
 
     -- Telescope --
+    use("stevearc/dressing.nvim")
     use({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
@@ -134,6 +135,13 @@ return require("packer").startup(function(use)
 
     -- Git Blame --
     use("APZelos/blamer.nvim")
+
+    -- Noice --
+    use({
+        "folke/noice.nvim",
+        requires = { { "MunifTanjim/nui.nvim" }, { "rcarriga/nvim-notify" } }
+    })
+
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
