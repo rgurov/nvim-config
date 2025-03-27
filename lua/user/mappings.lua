@@ -76,6 +76,15 @@ keymap("n", "<leader>gfs", ":GoFillStruct<cr>", opts)
 
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 
+-- Restart LSP --
+keymap("n", "<leader>r", ":LspRestart<CR>", opts)
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = { "go.mod", "go.sum" },
+    callback = function()
+        vim.cmd("LspRestart")
+    end,
+})
+
 vim.cmd([[
     command W w
     command Q q
