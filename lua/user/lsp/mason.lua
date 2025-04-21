@@ -6,6 +6,7 @@ local servers = {
     "ts_ls",
     "omnisharp",
     "clangd",
+    "buf_ls",
 }
 
 local settings = {

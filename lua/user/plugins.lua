@@ -139,6 +139,15 @@ return require("packer").startup(function(use)
     -- Noice --
     use("j-hui/fidget.nvim")
 
+    -- Avante --
+    use("MunifTanjim/nui.nvim")
+    use("MeanderingProgrammer/render-markdown.nvim")
+    use("HakonHarnes/img-clip.nvim")
+    use {
+        'rgurov/avante.nvim',
+        branch = 'fix_python_reserved_name',
+        run = 'make',
+    }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

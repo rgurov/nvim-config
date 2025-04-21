@@ -22,6 +22,6 @@ require("nvim-tree").setup({
         ignore = false,
     },
     filters = {
-        custom = { '__pycache__' }
+        custom = { '__pycache__', '*.meta', '.vscode', '*.csproj', '*.sln' }
     }
 })

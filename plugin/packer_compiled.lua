@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["avante.nvim"] = {
+    loaded = true,
+    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/avante.nvim",
+    url = "https://github.com/rgurov/avante.nvim"
+  },
   ["blamer.nvim"] = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/blamer.nvim",
@@ -159,6 +164,11 @@ _G.packer_plugins = {
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/guihua.lua",
     url = "https://github.com/ray-x/guihua.lua"
   },
+  ["img-clip.nvim"] = {
+    loaded = true,
+    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
+    url = "https://github.com/HakonHarnes/img-clip.nvim"
+  },
   ["kanagawa.nvim"] = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
@@ -198,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nordic.nvim",
     url = "https://github.com/AlexvZyl/nordic.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -274,6 +289,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["render-markdown.nvim"] = {
+    loaded = true,
+    path = "/Users/gurov/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
   },
   sonokai = {
     loaded = true,
