@@ -25,7 +25,6 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
 			ensure_installed = {
 				"gopls",
 				"ts_ls",
@@ -36,8 +35,6 @@ return {
 				"omnisharp",
 				"pyright",
 			},
-			-- handlers are configured in lspconfig.lua
-			handlers = {},
 		})
 
 		mason_tool_installer.setup({

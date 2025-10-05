@@ -7,10 +7,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-
-		local mason_lspconfig = require("mason-lspconfig")
-
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap
@@ -65,71 +61,75 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = false
 
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					capabilities = capabilities,
-					settings = {
-						gopls = {
-							analyses = {
-								composites = false,
-							},
-						},
+		-- Configure LSP servers using vim.lsp.config (mason-lspconfig 2.0)
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+			settings = {
+				gopls = {
+					analyses = {
+						composites = false,
 					},
-				})
-			end,
-			["pyright"] = function()
-				lspconfig["pyright"].setup({
-					capabilities = capabilities,
-					settings = {
-						python = {
-							analysis = {
-								typeCheckingMode = "off",
-							},
-						},
+				},
+			},
+		})
+
+		vim.lsp.config("pyright", {
+			capabilities = capabilities,
+			settings = {
+				python = {
+					analysis = {
+						typeCheckingMode = "off",
 					},
-				})
-			end,
-			["clangd"] = function()
-				lspconfig["clangd"].setup({
-					capabilities = capabilities,
-					filetypes = { "c", "cpp", "objc", "objcpp" },
-				})
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
+				},
+			},
+		})
+
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+			filetypes = { "c", "cpp", "objc", "objcpp" },
+		})
+
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
 					},
-				})
-			end,
-			["buf_ls"] = function()
-				lspconfig["buf_ls"].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						client.server_capabilities.documentFormattingProvider = false
-						client.server_capabilities.documentRangeFormattingProvider = false
-					end,
-				})
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("jsonls", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("omnisharp", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("buf_ls", {
+			capabilities = capabilities,
+			on_init = function(client)
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
 			end,
 		})
 	end,
