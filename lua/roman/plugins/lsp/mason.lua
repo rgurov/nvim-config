@@ -36,6 +36,8 @@ return {
 				"omnisharp",
 				"pyright",
 			},
+			-- handlers are configured in lspconfig.lua
+			handlers = {},
 		})
 
 		mason_tool_installer.setup({

@@ -3,10 +3,7 @@ return {
 	event = "VeryLazy",
 	version = false,
 	opts = {
-		provider = "openai",
-		openai = {
-			model = "o4-mini",
-		},
+		provider = "claude-code",
 	},
 	build = "make",
 
