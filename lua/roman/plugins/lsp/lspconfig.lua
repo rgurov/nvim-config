@@ -83,16 +83,24 @@ return {
 			},
 		})
 
-		vim.lsp.config("pyright", {
-			capabilities = capabilities,
+		-- vim.lsp.config("pyright", {
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				typeCheckingMode = "off",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+
+		vim.lsp.config("ty", {
 			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-					},
-				},
+				ty = {},
 			},
 		})
+
+		vim.lsp.enable("ty")
 
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
