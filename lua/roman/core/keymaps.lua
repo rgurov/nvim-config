@@ -99,8 +99,23 @@ vim.cmd([[ command Q q ]])
 
 -- Git commit popup
 vim.api.nvim_create_user_command("GitCommit", function()
-	vim.ui.input({ prompt = "Commit message: " }, function(msg)
+	-- Get current branch name
+	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
+
+	-- Determine prefix based on branch name
+	local prefix = ""
+	if branch:match("^NOISSUE") then
+		prefix = "NOISSUE: "
+	elseif branch:match("^HOTELS%-%d%d%d%d%d") then
+		local issue_id = branch:match("^(HOTELS%-%d%d%d%d%d)")
+		prefix = issue_id .. ": "
+	end
+
+	vim.ui.input({ prompt = "Commit message: ", default = prefix }, function(msg)
 		if msg and msg ~= "" then
+			-- Add all changes before committing
+			-- vim.fn.system("git add .")
+
 			local result = vim.fn.system({ "git", "commit", "-m", msg })
 
 			if vim.v.shell_error == 0 then
