@@ -57,8 +57,8 @@ return {
 		},
 		sections = {
 			lualine_a = { mode },
-			lualine_b = { branch, diff, diagnostics },
-			lualine_c = { { "filename", path = 2, file_status = true } },
+			lualine_b = { branch },
+			lualine_c = { { "filename", path = 1, file_status = true } },
 			--[[ lualine_x = { "encoding", "fileformat", "filetype" }, ]]
 			lualine_x = { filetype },
 			lualine_y = { location },
