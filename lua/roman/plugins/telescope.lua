@@ -45,7 +45,7 @@ return {
 			-- Convert to repo entries
 			local repos = vim.tbl_map(function(git_path)
 				local repo_path = vim.fn.fnamemodify(git_path, ":h")
-				local display = vim.fn.fnamemodify(repo_path, ":t:h:t") .. "/" .. vim.fn.fnamemodify(repo_path, ":t")
+				local display = vim.fn.fnamemodify(repo_path, ":h:t") .. "/" .. vim.fn.fnamemodify(repo_path, ":t")
 				return { path = repo_path, display = display:gsub("^%./", "") }
 			end, git_dirs)
 
