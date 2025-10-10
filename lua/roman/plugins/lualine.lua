@@ -59,7 +59,6 @@ return {
 			lualine_a = { mode },
 			lualine_b = { branch },
 			lualine_c = { { "filename", path = 1, file_status = true } },
-			--[[ lualine_x = { "encoding", "fileformat", "filetype" }, ]]
 			lualine_x = { filetype },
 			lualine_y = { location },
 			lualine_z = {},
