@@ -96,7 +96,12 @@ return {
 
 		vim.lsp.config("ty", {
 			settings = {
-				ty = {},
+				ty = {
+					inlayHints = {
+						variableTypes = false,
+						callArgumentNames = false,
+					},
+				},
 			},
 		})
 
