@@ -5,7 +5,7 @@ return {
 	opts = {
 		diff_opts = {
 			auto_close_on_accept = true,
-			vertical_split = false,
+			vertical_split = true,
 			open_in_current_tab = true,
 			keep_terminal_focus = false,
 		},

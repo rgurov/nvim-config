@@ -5,7 +5,9 @@ return {
 	keys = {
 		{ "<leader>e", "<cmd>lua MiniFiles.open()<CR>", desc = "Open Mini Files" },
 	},
-	config = function()
-		require("mini.files").setup({})
-	end,
+	opts = {
+		options = {
+			use_as_default_explorer = false,
+		},
+	},
 }
