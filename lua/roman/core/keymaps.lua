@@ -41,7 +41,7 @@ keymap("v", "p", '"_dP', { desc = "Paste without copying" })
 keymap("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 -- Restart LSP
-keymap("n", "<leader>r", ":LspRestart<CR>", { desc = "Restart LSP" })
+keymap("n", "<leader>r", ":lsp restart<CR>", { desc = "Restart LSP" })
 
 -- ╭──────────────────────────────╮
 -- │ Insert Mode Keymaps         │

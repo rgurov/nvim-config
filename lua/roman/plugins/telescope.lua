@@ -14,7 +14,13 @@ return {
 		end
 
 		local telescope = require("telescope")
-		local actions = require("telescope.actions")
+		local telescope_actions = require("telescope.actions")
+		local telescope_actions_state = require("telescope.actions.state")
+		local telescope_pickers = require("telescope.pickers")
+		local telescope_config = require("telescope.config")
+		local telescope_builtin = require("telescope.builtin")
+		local telescope_finders = require("telescope.finders")
+		local telescope_make_entry = require("telescope.make_entry")
 
 		telescope.setup({
 			defaults = {
@@ -23,8 +29,8 @@ return {
 				selection_caret = " ",
 				mappings = {
 					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-k>"] = telescope_actions.move_selection_previous, -- move to prev result
+						["<C-j>"] = telescope_actions.move_selection_next, -- move to next result
 					},
 				},
 			},
@@ -49,22 +55,49 @@ return {
 				return { path = repo_path, display = display:gsub("^%./", "") }
 			end, git_dirs)
 
-			require("telescope.pickers")
+			telescope_pickers
 				.new({}, {
 					prompt_title = "Select Repository",
-					finder = require("telescope.finders").new_table({
+					finder = telescope_finders.new_table({
 						results = repos,
 						entry_maker = function(e)
 							return { value = e.path, display = e.display, ordinal = e.display }
 						end,
 					}),
-					sorter = require("telescope.config").values.generic_sorter({}),
+					sorter = telescope_config.values.generic_sorter({}),
 					attach_mappings = function(bufnr)
-						actions.select_default:replace(function()
-							local entry = require("telescope.actions.state").get_selected_entry()
-							actions.close(bufnr)
-							require("telescope.builtin").find_files({ cwd = entry.value })
+						telescope_actions.select_default:replace(function()
+							local entry = telescope_actions_state.get_selected_entry()
+							telescope_actions.close(bufnr)
+							telescope_builtin.find_files({ cwd = entry.value })
 						end)
+						return true
+					end,
+				})
+				:find()
+		end
+
+		local function find_git_conflicts()
+			telescope_pickers
+				.new({}, {
+					prompt_title = "Merge Conflicts",
+
+					finder = telescope_finders.new_oneshot_job({ "git", "diff", "--name-only", "--diff-filter=U" }, {
+						entry_maker = telescope_make_entry.gen_from_file({}),
+					}),
+
+					sorter = telescope_config.values.file_sorter({}),
+
+					previewer = telescope_config.values.file_previewer({}),
+
+					attach_mappings = function(bufnr)
+						telescope_actions.select_default:replace(function()
+							local entry = telescope_actions_state.get_selected_entry()
+							telescope_actions.close(bufnr)
+
+							vim.cmd("edit " .. entry.value)
+						end)
+
 						return true
 					end,
 				})
@@ -78,5 +111,6 @@ return {
 		keymap.set("n", "<leader>r", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>s", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>p", find_in_repo, { desc = "Find files in repository" })
+		keymap.set("n", "<leader>f", find_git_conflicts, { desc = "Find files with git conflicts" })
 	end,
 }

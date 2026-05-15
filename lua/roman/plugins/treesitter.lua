@@ -19,7 +19,7 @@ return {
 			autotag = {
 				enable = true,
 			},
-			ensure_installed = "all",
+			ensure_installed = { "go", "typescript", "javascript", "python", "markdown", "json", "csv" },
 		})
 	end,
 }

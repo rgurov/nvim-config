@@ -34,7 +34,7 @@ o.showmode = false -- Don't show mode (like -- INSERT --) in command line
 o.cmdheight = 2 -- Height of the command line (set to 2 for more message space)
 o.showtabline = 1 -- Show tab line only when there are multiple tabs
 o.termguicolors = true -- Enable true color support in the terminal
-o.list = true -- Show whitespace characters (tabs, trailing spaces, etc.)
+o.list = false -- Show whitespace characters (tabs, trailing spaces, etc.)
 o.splitright = true
 
 -- Performance

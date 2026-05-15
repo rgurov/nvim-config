@@ -27,13 +27,16 @@ return {
 		mason_lspconfig.setup({
 			ensure_installed = {
 				"gopls",
-				"ts_ls",
+				"vtsls",
 				"lua_ls",
 				"buf_ls",
 				"clangd",
 				"jsonls",
 				"omnisharp",
 				"pyright",
+			},
+			automatic_enable = {
+				exclude = { "vtsls", "ts_ls" },
 			},
 		})
 
