@@ -1,25 +1,43 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
-	build = ":TSUpdate",
-	dependencies = {
-		"windwp/nvim-ts-autotag",
-	},
-	config = function()
-		-- import nvim-treesitter plugin
-		local treesitter = require("nvim-treesitter.configs")
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		-- nvim-treesitter (main) does not support lazy-loading
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter").install({
+				"go",
+				"typescript",
+				"tsx",
+				"javascript",
+				"jsdoc",
+				"python",
+				"markdown",
+				"markdown_inline",
+				"json",
+				"csv",
+			})
 
-		-- configure treesitter
-		treesitter.setup({ -- enable syntax highlighting
-			highlight = {
-				enable = true,
-			},
-			-- enable indentation
-			indent = { enable = true },
-			autotag = {
-				enable = true,
-			},
-			ensure_installed = { "go", "typescript", "javascript", "python", "markdown", "json", "csv" },
-		})
-	end,
+			-- highlighting and indentation are opt-in on the main branch:
+			-- enable them for every buffer that has a parser available
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("roman_treesitter", { clear = true }),
+				callback = function(ev)
+					if not vim.treesitter.language.get_lang(ev.match) then
+						return
+					end
+					if not pcall(vim.treesitter.start, ev.buf) then
+						return
+					end
+					vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {},
+	},
 }
